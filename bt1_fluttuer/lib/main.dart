@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/my_app2.dart';
-import 'package:hello_flutter/my_app4.dart';
-import 'package:hello_flutter/signup.dart';
-import 'listview_basic.dart';
-import 'login.dart';
+import 'package:hello_flutter/view/my_app2.dart';
+import 'package:hello_flutter/view/my_app4.dart';
+import 'package:hello_flutter/view/profile/profile_screen.dart';
+import 'package:hello_flutter/view/profile/profile_viewmodel.dart';
+import 'package:hello_flutter/view/signup.dart';
+import 'package:provider/provider.dart';
+import 'view/listview_basic.dart';
+import 'view/login.dart';
 
 void main() {
-  runApp(MyApp5());
+  runApp(
+    Profile(),
+  );
+}
+
+class Profile extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.light,
+        primarySwatch: Colors.blue,
+      ),
+      home: ProfileScreen(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

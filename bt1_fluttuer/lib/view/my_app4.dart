@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/photo.dart';
+import 'package:hello_flutter/model/photo.dart';
 
 class MyApp4 extends StatelessWidget {
   const MyApp4({Key? key}) : super(key: key);

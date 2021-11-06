@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hello_flutter/signup.dart';
+import 'package:hello_flutter/view/signup.dart';
 
 class MyApp5 extends StatelessWidget {
   const MyApp5({Key? key}) : super(key: key);
