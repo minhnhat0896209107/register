@@ -13,29 +13,27 @@ class HeadProfile extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              height: 30,
-              width: 100,
+              width: Get.width * 0.38,
+              height: 100,
             ),
             Text(
               "Profile",
-              style: TextStyle(color: Colors.grey, fontSize: 20),
+              style: TextStyle(color: Colors.grey, fontSize: 30),
             ),
             SizedBox(
-              width: 100,
+              width: Get.width * 0.3,
             ),
             Container(
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+                style: TextStyle(color: Colors.blue, fontSize: 20),
               ),
             )
           ],
         ),
         CircleAvatar(
-          child: Image.network(
-            image!,
-            width: Get.width,
-          ),
+          backgroundImage: NetworkImage(image!),
+          radius: 50,
         )
       ],
     );

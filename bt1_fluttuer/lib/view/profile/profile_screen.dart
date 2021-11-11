@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hello_flutter/model/profile.dart';
+import 'package:hello_flutter/view/profile/component/body_profile.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
@@ -16,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late Future<Profile> profile;
 
   Future<Profile> getProfile() async {
-    var response = await http.get(Uri.https('randomuser.me', '/api/'));
+    var response = await http.get(Uri.https('randomuser.me', 'api'));
 
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
@@ -29,6 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     profile = getProfile();
+    print(profile);
     super.initState();
   }
 
@@ -41,7 +44,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           if (snapshot.hasData) {
             var data = snapshot.data;
             var rs = data!.results![0];
-            return _buildBody(rs.picture!.thumbnail.toString());
+            var img = rs.picture!.thumbnail.toString();
+            var fname = rs.name!.first.toString();
+            var lname = rs.name!.last.toString();
+            var email = rs.email.toString();
+            return _buildBody(img, fname, lname, email);
           } else {
             return CircularProgressIndicator();
           }
@@ -51,14 +58,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-Widget _buildBody(image) {
+Widget _buildBody(image, firstname, lastname, email) {
   return Container(
     child: Column(
       children: [
         HeadProfile(
           image: image,
         ),
-        
+        SizedBox(
+          height: Get.height * 0.05,
+        ),
+        BodyProfile(
+          firstName: firstname,
+          lastName: lastname,
+          email: email,
+        )
       ],
     ),
   );

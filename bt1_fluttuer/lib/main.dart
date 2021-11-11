@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/view/my_app2.dart';
 import 'package:hello_flutter/view/my_app4.dart';
+import 'package:hello_flutter/view/news/new_screen.dart';
 import 'package:hello_flutter/view/profile/profile_screen.dart';
 import 'package:hello_flutter/view/profile/profile_viewmodel.dart';
 import 'package:hello_flutter/view/signup.dart';
 import 'package:provider/provider.dart';
+import 'view/bottom_nav.dart';
 import 'view/listview_basic.dart';
 import 'view/login.dart';
 
 void main() {
   runApp(
-    Profile(),
+    NewScreen(),
   );
 }
 
