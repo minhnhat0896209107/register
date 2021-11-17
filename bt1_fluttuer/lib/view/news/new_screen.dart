@@ -5,6 +5,7 @@ import 'package:hello_flutter/model/new.dart';
 import 'package:hello_flutter/service/service.dart';
 import 'package:hello_flutter/service/service_new.dart';
 import 'package:hello_flutter/view/news/detail_screen.dart';
+import 'package:hello_flutter/view/news/scan_screen.dart';
 
 class ApiWeb extends StatelessWidget {
   @override
@@ -22,9 +23,9 @@ class NewScreen extends StatefulWidget {
 
 class _NewScreenState extends State<NewScreen> {
   var arrService = [
-    Service().getWebApi(tesla),
-    Service().getWebApi(domains),
-    Service().getWebApi(apple),
+    Service().fetchApiNew(tesla),
+    Service().fetchApiNew(domains),
+    Service().fetchApiNew(apple),
   ];
 
   int count = 0;
@@ -35,6 +36,9 @@ class _NewScreenState extends State<NewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Center(child: Text("News", style: TextStyle(fontSize: 22)))),
       body: SafeArea(child: _build()),
     );
   }
@@ -44,7 +48,7 @@ class _NewScreenState extends State<NewScreen> {
         child: Column(
       children: [
         SizedBox(
-          height: Get.height * 0.05,
+          height: Get.height * 0.01,
         ),
         _content(),
         _listContent()
@@ -144,11 +148,14 @@ class _NewScreenState extends State<NewScreen> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        Detail(image: p.urlToImage, content: p.content)));
+                  builder: (context) =>
+                      Detail(image: p.urlToImage, content: p.content),
+                ));
           },
         );
       },
     );
   }
 }
+
+//
