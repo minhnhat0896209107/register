@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hello_flutter/config/utils.dart';
 import 'package:hello_flutter/model/new.dart';
+import 'package:hello_flutter/service/service.dart';
 import 'package:hello_flutter/service/service_new.dart';
 import 'package:hello_flutter/view/news/detail_screen.dart';
 
@@ -21,23 +22,15 @@ class NewScreen extends StatefulWidget {
 
 class _NewScreenState extends State<NewScreen> {
   var arrService = [
-    NewService()
-        .fetchNewsTesla(NAME_TESLA, FROM_DATE_T10, SORT_BY_PUPLIC, API_KEY),
-    NewService().fetchNewsDomain(NAME_DOMAIN, API_KEY),
-    NewService().fetchNewsApple(
-        NAME_APPLE, FROM_DATE_T11, TO_DATE_T11, SORT_BY_POPULAR, API_KEY),
-    NewService().fetchNewsTechcrunh(API_KEY),
+    Service().getWebApi(tesla),
+    Service().getWebApi(domains),
+    Service().getWebApi(apple),
   ];
 
   int count = 0;
   int x = 0;
-  var arrName = ['Tesla', 'Domain', 'Apple', 'Techcrunh'];
-  var arrImage = [
-    IMAGE_TESLA,
-    IMAGE_DOMAIN,
-    IMAGE_APPLE,
-    IMAGE_TECHCRUNH,
-  ];
+  var arrName = ['Tesla', 'Domain', 'Apple'];
+  var arrImage = [imageTesla, imagedomain, imageapple];
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +120,7 @@ class _NewScreenState extends State<NewScreen> {
                   child: Column(
                     children: [
                       Image.network(p.urlToImage == null || p.urlToImage == ''
-                          ? IMAGE_NULL
+                          ? imagenull
                           : p.urlToImage),
                       Text(
                         p.title,
@@ -151,7 +144,8 @@ class _NewScreenState extends State<NewScreen> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Detail(image: p.urlToImage,content: p.content)));
+                    builder: (context) =>
+                        Detail(image: p.urlToImage, content: p.content)));
           },
         );
       },
