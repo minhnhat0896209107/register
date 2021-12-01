@@ -5,6 +5,7 @@ import 'package:hello_flutter/view/news/new_screen.dart';
 import 'package:hello_flutter/view/profile/profile_screen.dart';
 import 'package:hello_flutter/view/profile/profile_viewmodel.dart';
 import 'package:hello_flutter/view/signup.dart';
+import 'package:hello_flutter/view/tictactoe/choosett_screen.dart';
 import 'package:provider/provider.dart';
 import 'view/bmi/bmi_screen.dart';
 import 'view/bottom_nav.dart';
@@ -14,7 +15,7 @@ import 'view/tictactoe/tictac.dart';
 
 void main() {
   runApp(
-    TTScreen(),
+    ChooseTicTac(),
   );
 }
 

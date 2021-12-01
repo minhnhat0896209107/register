@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'button_game.dart';
 import 'dialog.dart';
 
-class TicTacScreen extends StatefulWidget {
+class TicTac2Screen extends StatefulWidget {
   @override
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<TicTacScreen> {
+class _HomePageState extends State<TicTac2Screen> {
   late List<GameButton> buttonsList;
   var player1;
   var player2;
@@ -62,27 +62,9 @@ class _HomePageState extends State<TicTacScreen> {
           showDialog(
               context: context,
               builder: (_) => new CustomDialog("Tie", "Restart", resetGame));
-        } else {
-          activePlayer == 2 ? autoPlay() : null;
         }
       }
     });
-  }
-
-  void autoPlay() {
-    var emptyCells = [];
-    var list = new List.generate(9, (i) => i + 1);
-    for (var cellID in list) {
-      if (!(player1.contains(cellID) || player2.contains(cellID))) {
-        emptyCells.add(cellID);
-      }
-    }
-
-    var r = new Random();
-    var randIndex = r.nextInt(emptyCells.length - 1);
-    var cellID = emptyCells[randIndex];
-    int i = buttonsList.indexWhere((p) => p.id == cellID);
-    playGame(buttonsList[i]);
   }
 
   int checkWinner() {
@@ -153,11 +135,13 @@ class _HomePageState extends State<TicTacScreen> {
       if (winner == 1) {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog("You win", "Restart", resetGame));
+            builder: (_) =>
+                new CustomDialog("Play 1 win", "Restart", resetGame));
       } else {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog("You lose", "Restart", resetGame));
+            builder: (_) =>
+                new CustomDialog("Play 2 win", "Restart", resetGame));
       }
     }
 
