@@ -6,13 +6,15 @@ import 'package:hello_flutter/view/profile/profile_screen.dart';
 import 'package:hello_flutter/view/profile/profile_viewmodel.dart';
 import 'package:hello_flutter/view/signup.dart';
 import 'package:provider/provider.dart';
+import 'view/bmi/bmi_screen.dart';
 import 'view/bottom_nav.dart';
 import 'view/listview_basic.dart';
 import 'view/login.dart';
+import 'view/tictactoe/tictac.dart';
 
 void main() {
   runApp(
-    ApiWeb(),
+    TTScreen(),
   );
 }
 
@@ -82,8 +84,8 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.ltr,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  createColum("Call", Icons.call, Colors.red),
-                  createColum("Routes", Icons.place, Colors.cyan),
+                  createColum("Call", Icons.call, Colors.orange),
+                  createColum("Routes", Icons.place, Colors.black),
                   createColum("Share", Icons.share, Colors.orange),
                   createColum("Clock", Icons.access_alarms, Colors.green)
                 ],
